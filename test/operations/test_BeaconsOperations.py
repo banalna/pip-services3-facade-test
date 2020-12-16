@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from pip_services3_commons.run import Parameters
 
-from src.pip_services3_beacons.data.version1 import BeaconV1, BeaconTypeV1
+from pip_services3_facade.pip_services3_beacons.data.version1 import BeaconV1, BeaconTypeV1
 
 from test.fixtures.TestRefernces import ReferencesTest
 from test.fixtures.RestClientTest import RestClientTest

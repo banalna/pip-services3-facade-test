@@ -8,9 +8,9 @@ from pip_services3_components.build.CompositeFactory import CompositeFactory
 from pip_services3_container.refer.ManagedReferences import ManagedReferences
 from pip_services3_rpc.build import DefaultRpcFactory
 
-from src.build.ClientFacadeFactory import ClientFacadeFactory
-from src.build.ServiceFacadeFactory import ServiceFacadeFactory
-from src.services.version1.FacadeServiceV1 import FacadeServiceV1
+from pip_services3_facade.build.ClientFacadeFactory import ClientFacadeFactory
+from pip_services3_facade.build.ServiceFacadeFactory import ServiceFacadeFactory
+from pip_services3_facade.services.version1.FacadeServiceV1 import FacadeServiceV1
 
 
 class ReferencesTest(ManagedReferences):

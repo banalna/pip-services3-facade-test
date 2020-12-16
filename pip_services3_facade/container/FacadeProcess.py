@@ -2,9 +2,9 @@
 from pip_services3_container import ProcessContainer
 from pip_services3_rpc.build.DefaultRpcFactory import DefaultRpcFactory
 
-from src.build.ClientFacadeFactory import ClientFacadeFactory
-from src.build.FacadeFactory import FacadeFactory
-from src.build.ServiceFacadeFactory import ServiceFacadeFactory
+from pip_services3_facade.build.ClientFacadeFactory import ClientFacadeFactory
+from pip_services3_facade.build.FacadeFactory import FacadeFactory
+from pip_services3_facade.build.ServiceFacadeFactory import ServiceFacadeFactory
 
 from pip_services3_mongodb.build.DefaultMongoDbFactory import DefaultMongoDbFactory
 
