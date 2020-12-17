@@ -27,8 +27,7 @@ class FacadeServiceV1(RestService):
         self._beacons_operations.set_references(references)
 
     def register(self):
-        # TODO
-        pass
+        self.register_beacons_routes()
 
     def register_beacons_routes(self):
         self.register_interceptor('/beacons', self._beacons_operations.increment_number_of_calls)

@@ -2,7 +2,6 @@
 /config/config.json
 /config/config.yaml
 /data/dummies.json
-/build
 /dist
 .DS_Store
 *.pyc

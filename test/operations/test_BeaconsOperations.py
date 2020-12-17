@@ -3,7 +3,7 @@ from pip_services3_commons.run import Parameters
 
 from pip_services3_facade.pip_services3_beacons.data.version1 import BeaconV1, BeaconTypeV1
 
-from test.fixtures.TestRefernces import ReferencesTest
+from test.fixtures.ReferencesTest import ReferencesTest
 from test.fixtures.RestClientTest import RestClientTest
 
 BEACON1 = BeaconV1("1", "1", BeaconTypeV1.AltBeacon, "00001", "TestBeacon1",
@@ -33,6 +33,7 @@ class TestBeaconsOperationsV1:
 
     def test_beacons_operations(self):
         # create one beacon
-        beacon1 = self.rest.post('/api/1.0/beacons/create_beacon', Parameters.from_tuples("beacon", BEACON1))
+        beacon1 = self.rest.post('/v1/beacons/create_beacon', Parameters.from_tuples("beacon", BEACON1))
         assert beacon1 is not None
+        assert 400 > beacon1.status_code
         # TODO

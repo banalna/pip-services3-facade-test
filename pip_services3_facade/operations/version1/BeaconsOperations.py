@@ -3,7 +3,7 @@
 from pip_services3_commons.refer import Descriptor
 from pip_services3_rpc.services import RestOperations
 
-from pip_services3_facade.pip_services3_beacons.clients.version1.BeaconsHttpClientV1 import BeaconsHttpClientV1
+from pip_services3_facade.pip_services3_beacons.clients import BeaconsHttpClientV1
 
 
 class BeaconsOperations(RestOperations):
@@ -22,7 +22,7 @@ class BeaconsOperations(RestOperations):
         self._number_of_calls += 1
 
     def set_references(self, references):
-        super(BeaconsOperations, self).set_references(references)
+        super().set_references(references)
         self._beacons_client = self._dependency_resolver.get_one_required('beacons')
 
     def get_page_by_filter(self):
