@@ -33,7 +33,8 @@ class TestBeaconsOperationsV1:
 
     def test_beacons_operations(self):
         # create one beacon
-        beacon1 = self.rest.post('/v1/beacons/create_beacon', Parameters.from_tuples("beacon", BEACON1))
+        beacon1 = self.rest.post('/api/1.0/create_beacon', Parameters.from_tuples("beacons", BEACON1))
         assert beacon1 is not None
         assert 400 > beacon1.status_code
+        assert beacon1.reason == 'Created'
         # TODO

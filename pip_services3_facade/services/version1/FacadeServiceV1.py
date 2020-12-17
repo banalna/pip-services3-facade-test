@@ -40,3 +40,4 @@ class FacadeServiceV1(RestService):
         self.register_route('get', '/beacons/handled_error', None, self._beacons_operations.handled_error)
         self.register_route('get', '/beacons/unhandled_error', None, self._beacons_operations.unhandled_error)
         self.register_route('post', '/about', None, self._about_operations.get_about)
+        self.register_route('post', '/create_beacon', None, self._beacons_operations.create)

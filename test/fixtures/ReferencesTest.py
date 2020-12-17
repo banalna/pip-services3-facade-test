@@ -4,12 +4,15 @@ from pip_services3_commons.config.ConfigParams import ConfigParams
 from pip_services3_commons.refer.Descriptor import Descriptor
 from pip_services3_components.build.CompositeFactory import CompositeFactory
 from pip_services3_container.refer.ManagedReferences import ManagedReferences
-from pip_services3_mongodb.build import DefaultMongoDbFactory
+from pip_services3_mongodb.build.DefaultMongoDbFactory import DefaultMongoDbFactory
 from pip_services3_rpc.build.DefaultRpcFactory import DefaultRpcFactory
 
 from pip_services3_facade.build.ClientFacadeFactory import ClientFacadeFactory
 from pip_services3_facade.build.FacadeFactory import FacadeFactory
 from pip_services3_facade.build.ServiceFacadeFactory import ServiceFacadeFactory
+from pip_services3_facade.pip_services3_beacons.clients.version1.BeaconsDirectClientV1 import BeaconsDirectClientV1
+from pip_services3_facade.pip_services3_beacons.logic import BeaconsController
+from pip_services3_facade.pip_services3_beacons.persistence.BeaconsFilePersistence import BeaconsFilePersistence
 from pip_services3_facade.services.version1.FacadeServiceV1 import FacadeServiceV1
 
 
@@ -40,10 +43,22 @@ class ReferencesTest(ManagedReferences):
         self.put(None, self._factory)
 
         # Add service
-        self.put(None, FacadeServiceV1)
+
+        # TODO: check this
+        facade_service = FacadeServiceV1()
+        facade_service.configure(ConfigParams.from_tuples(
+            'root_path', '',  # '/api/1.0',
+            'connection.protocol', 'http',
+            'connection.host', 'localhost',
+            'connection.port', 3000
+        ))
+        self.put(None, facade_service)
 
         # Add services
-        self.append(Descriptor('beacons', 'client', 'direct', '*', '1.0'))
+        self.put(Descriptor('beacons', 'client', 'direct', '*', '1.0'), BeaconsDirectClientV1())
+        self.put(Descriptor('beacons', 'persistence', 'file', 'default', '1.0'),
+                 BeaconsFilePersistence('./data/beacons.test.json'))
+        self.put(Descriptor('beacons', 'controller', 'default', 'default', '1.0'), BeaconsController())
 
     def _configure_service(self):
         # Configure Facade service
